@@ -11,8 +11,8 @@
     <AssemblyName>GeoViewer</AssemblyName>
     <ApplicationManifest>app.manifest</ApplicationManifest>
     <ApplicationIcon>app.ico</ApplicationIcon>
-    <Version>1.0.0</Version>
-    <FileVersion>1.0.0.0</FileVersion>
+    <Version>1.0.1</Version>
+    <FileVersion>1.0.1.0</FileVersion>
     <Product>GeoViewer</Product>
     <AssemblyTitle>GeoViewer · 几何参考</AssemblyTitle>
     <Description>GeoViewer · 绘画参考用的 3D 几何体观察工具</Description>

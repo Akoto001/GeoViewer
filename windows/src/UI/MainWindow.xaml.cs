@@ -17,6 +17,8 @@ namespace GeoViewer.UI
         private int _litX = -1, _litY = -1, _litZ = -1;
         private bool _bannerDismissed;
         private bool _sync;
+        private string _hintDefault;
+        private Brush _hintBrush;
 
         public MainWindow()
         {
@@ -753,6 +755,30 @@ namespace GeoViewer.UI
             PracticeBanner.Visibility = finished && !_bannerDismissed ? Visibility.Visible : Visibility.Collapsed;
             PracticeRandom.IsEnabled = !finished;
             PracticeRandom.Opacity = finished ? 0.45 : 1.0;
+
+            if (_hintDefault == null)
+            {
+                _hintDefault = PracticeHint.Text;
+                _hintBrush = PracticeHint.Foreground;
+            }
+            if (!string.IsNullOrEmpty(_practice.LastSaveError))
+            {
+                PracticeHint.Text = "⚠ 记录没能写入磁盘：" + _practice.LastSaveError;
+                PracticeHint.Foreground = (Brush)FindResource("WarmBrush");
+            }
+            else if (!string.IsNullOrEmpty(_practice.LastLoadNote))
+            {
+                PracticeHint.Text = _practice.LastLoadNote;
+                PracticeHint.Foreground = (Brush)FindResource("TextDim");
+            }
+            else
+            {
+                PracticeHint.Text = _hintDefault;
+                if (_hintBrush != null)
+                {
+                    PracticeHint.Foreground = _hintBrush;
+                }
+            }
         }
     }
 }
